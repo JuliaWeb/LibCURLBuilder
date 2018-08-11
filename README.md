@@ -1,4 +1,6 @@
-# LibCURL builder
+# LibCURLBuilder
+
+[![Build Status](https://travis-ci.org/JuliaWeb/LibCURLBuilder.svg?branch=master)](https://travis-ci.org/JuliaWeb/LibCURLBuilder)
 
 This repository builds binary artifacts for the LibCURL project.
 This repository has a default .travis.yml file that can be used to build
