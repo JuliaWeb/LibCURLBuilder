@@ -15,8 +15,15 @@ sources = [
 # Bash recipe for building across all platforms
 script = raw"""
 cd $WORKSPACE/srcdir/curl-7.61.0
-./configure --prefix=$prefix --host=$target --with-mbedtls
-make -j${nproc} LDFLAGS="-L$prefix/lib -Wl,-rpath-link,$prefix/lib"
+./configure --prefix=$prefix --host=$target --with-mbedtls --disable-manual
+if [[ $target == *-w64-mingw32 ]]; then
+    LDFLAGS="-L$prefix/bin"
+elif [[ $target == x86_64-apple-darwin14 ]]; then
+    LDFLAGS="-L$prefix/lib -Wl,-rpath,$prefix/lib"
+else
+    LDFLAGS="-L$prefix/lib -Wl,-rpath-link,$prefix/lib"
+fi
+make -j${nproc} LDFLAGS="$LDFLAGS"
 make install
 
 """
@@ -35,7 +42,8 @@ platforms = [
     Linux(:armv7l, :musl, :eabihf),
     MacOS(:x86_64),
     FreeBSD(:x86_64),
-    Windows(:x86_64)
+    Windows(:i686),
+    Windows(:x86_64),
 ]
 
 # The products that we will ensure are always built
