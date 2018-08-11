@@ -25,3 +25,12 @@ before_script:
 script:
   - julia build_tarballs.jl
 
+deploy:
+  provider: releases
+  api_key:
+    secure: Kyr5Gkf4fx6JCm4z1BAFfowJ0wz5ZXIJE6AV7Ht/eE85I2XjkNto3kDWSwyulgtEtJyBosKDXvaqRxRom1CsDa7wYoW0UPdIkqDy7yzbA8xCcrPDIAh1tPb5KpzCH2jnkk+yDNyvhQAa3WlErU3D0YUE3vA1Rs/w521RLipZi4x01FYm6Vm9jaHHkWL2gDAlUKjWrJW6RE69e7lcK6NaKa4yEJj/Exksb+mdW5cZkojqjDHrxKs4rSq5deXY9FFMPQpMb3571Er8eUvBjuM2/itutGivOp+xiWnhKsR0SSa8QfytjkZvpcx5sFKVYlwv1jVeoXo749Mo/oOFOZBv21/XLv3cnv6K5J+Sbjvs6vA+DfdBXbgBsQmNPwnOMNYZhZNo7x/J1FipnGbhniLbIaK7W0JUJ/mfXmPGBFV9S1YDXpEv+zC1/Lhk56giV/Hu6bpKhPkZfXVwNldzeBqyWnSIX8XO9xPjqrk8gXWqy10GepIEPMllV+Wv+JFoMVxog35jiW/4giy1BV54/HXAZzTkSAIaZoSm845TckGEo6wyyPYE1Us//Tl4VMoBqdhy/j0MHKzOtJW0BAZYfzAfaO1f8bVO/TR2OmznJbQtSz9i2uSZCeeUXLi2GOdMdGZQJGGc6YVvXj2LY+qhRjPwMgqg4hb65Qi3CfPW2rcBvdQ=
+  file_glob: true
+  file: products/*
+  on:
+    repo: JuliaWeb/LibCURLBuilder
+    tags: true
