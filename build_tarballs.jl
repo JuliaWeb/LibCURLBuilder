@@ -48,7 +48,7 @@ platforms = [
 
 # The products that we will ensure are always built
 products(prefix) = [
-    LibraryProduct(prefix, "libcurl", Symbol("")),
+    LibraryProduct(prefix, "libcurl", :libcurl),
     ExecutableProduct(prefix, "curl", :curl)
 ]
 
