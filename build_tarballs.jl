@@ -19,7 +19,7 @@ cd $WORKSPACE/srcdir/curl-7.61.0
 if [[ $target == *-w64-mingw32 ]]; then
     LDFLAGS="-L$prefix/bin"
 elif [[ $target == x86_64-apple-darwin14 ]]; then
-    LDFLAGS="-L$prefix/lib -Wl,-rpath,$prefix/lib"
+    LDFLAGS="-L$prefix/lib -Wl,-rpath=$prefix/lib"
 else
     LDFLAGS="-L$prefix/lib -Wl,-rpath-link,$prefix/lib"
 fi
