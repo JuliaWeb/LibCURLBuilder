@@ -15,7 +15,7 @@ sources = [
 # Bash recipe for building across all platforms
 script = raw"""
 cd $WORKSPACE/srcdir/curl-7.61.0
-./configure --prefix=$prefix --host=$target --with-mbedtls --disable-manual
+./configure --prefix=$prefix --host=$target --with-mbedtls --disable-manual --without-ssl
 if [[ $target == *-w64-mingw32 ]]; then
     LDFLAGS="-L$prefix/bin"
 elif [[ $target == x86_64-apple-darwin14 ]]; then
