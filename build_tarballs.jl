@@ -24,7 +24,7 @@ else
     LDFLAGS="-L$prefix/lib -Wl,-rpath-link,$prefix/lib"
 fi
 make -j${nproc} LDFLAGS="$LDFLAGS"
-make install
+make install-exec
 
 """
 
