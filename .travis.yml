@@ -19,7 +19,7 @@ sudo: required
 
 # Before anything else, get the latest versions of things
 before_script:
-  - julia -e 'using Pkg; Pkg.add([PackageSpec(name="BinaryBuilder", rev="sf/bb8"), PackageSpec(name="BinaryProvider")])'
+  - julia -e 'using Pkg; Pkg.add([PackageSpec(name="BinaryBuilder", rev="master"), PackageSpec(name="BinaryProvider")])'
 
 script:
   - julia build_tarballs.jl

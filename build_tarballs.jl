@@ -42,7 +42,7 @@ platforms = [
     Linux(:armv7l, :musl, :eabihf),
     MacOS(:x86_64),
     FreeBSD(:x86_64),
-    # Windows(:i686),
+    Windows(:i686),
     Windows(:x86_64),
 ]
 
