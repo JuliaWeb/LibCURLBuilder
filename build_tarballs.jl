@@ -14,13 +14,29 @@ sources = [
 # Bash recipe for building across all platforms
 script = raw"""
 cd $WORKSPACE/srcdir/curl-7.64.0
-./configure --prefix=$prefix --host=$target --with-mbedtls --without-ssl --disable-manual
+
+# Set up ca path/bundle
+ca_args=""
+if [[ $target == x86_64-apple-darwin14 ]]; then
+    ca_args="--with-ca-bundle=/etc/ssl/cert.pem"
+elif [[ $target == *-linux-* ]]; then
+    ca_args="--with-ca-bundle=/etc/ssl/certs/ca-certificates.crt"
+fi
+
+# Configure and build
+./configure \
+    --prefix=$prefix \
+    --host=$target \
+    --with-mbedtls \
+    --without-ssl \
+    --disable-manual $ca_args
+
 if [[ $target == *-w64-mingw32 ]]; then
-    LDFLAGS="-L$prefix/bin"
+    LDFLAGS="$LDFLAGS -L$prefix/bin"
 elif [[ $target == x86_64-apple-darwin14 ]]; then
-    LDFLAGS="-L$prefix/lib -Wl,-rpath,$prefix/lib"
+    LDFLAGS="$LDFLAGS -L$prefix/lib -Wl,-rpath,$prefix/lib"
 else
-    LDFLAGS="-L$prefix/lib -Wl,-rpath-link,$prefix/lib"
+    LDFLAGS="$LDFLAGS -L$prefix/lib -Wl,-rpath-link,$prefix/lib"
 fi
 make -j${nproc} LDFLAGS="$LDFLAGS"
 make install-exec
@@ -45,7 +61,7 @@ platforms = [
 
 # The products that we will ensure are always built
 products(prefix) = [
-    LibraryProduct(prefix, "libcurl", :libcurl),
+    LibraryProduct(prefix, "libcurl", :libcurl)
 ]
 
 # Dependencies that must be installed before this package can be built
