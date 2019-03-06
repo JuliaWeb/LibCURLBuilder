@@ -19,7 +19,8 @@ sudo: required
 
 # Before anything else, get the latest versions of things
 before_script:
-  - julia -e 'using Pkg; Pkg.add([PackageSpec(name="BinaryBuilder", version=v"0.1.4"), PackageSpec(name="MbedTLS", version=v"0.6.6"), PackageSpec(name="BinaryProvider")])'
+  # MbedTLS version is pinned to 0.6.6 because 0.6.7 is currently broken. see https://github.com/JuliaWeb/MbedTLS.jl/issues/193
+  - julia -e 'using Pkg; Pkg.add([PackageSpec(name="BinaryBuilder"), PackageSpec(name="MbedTLS", version=v"0.6.6"), PackageSpec(name="BinaryProvider")])'
 
 script:
   - julia build_tarballs.jl
