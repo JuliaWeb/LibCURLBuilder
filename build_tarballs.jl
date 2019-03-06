@@ -15,21 +15,13 @@ sources = [
 script = raw"""
 cd $WORKSPACE/srcdir/curl-7.64.0
 
-# Set up ca path/bundle
-ca_args=""
-if [[ $target == x86_64-apple-darwin14 ]]; then
-    ca_args="--with-ca-bundle=/etc/ssl/cert.pem"
-elif [[ $target == *-linux-* ]]; then
-    ca_args="--with-ca-bundle=/etc/ssl/certs/ca-certificates.crt"
-fi
-
 # Configure and build
 ./configure \
     --prefix=$prefix \
     --host=$target \
     --with-mbedtls \
     --without-ssl \
-    --disable-manual $ca_args
+    --disable-manual
 
 if [[ $target == *-w64-mingw32 ]]; then
     LDFLAGS="$LDFLAGS -L$prefix/bin"
