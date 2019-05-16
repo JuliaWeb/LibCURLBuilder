@@ -46,7 +46,7 @@ products(prefix) = [
 dependencies = [
     string(
         "https://github.com/JuliaWeb/MbedTLSBuilder/releases/download/",
-        "v0.17.0/build_MbedTLS.v2.16.0.jl",
+        "v0.20.0/build_MbedTLS.v2.6.1.jl",
     ),
     string(
         "https://github.com/bicycle1885/ZlibBuilder/releases/download/",
