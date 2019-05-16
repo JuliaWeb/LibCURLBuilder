@@ -50,7 +50,7 @@ dependencies = [
     ),
     string(
         "https://github.com/bicycle1885/ZlibBuilder/releases/download/",
-        "v1.0.3/build_Zlib.v1.2.11.jl",
+        "v1.0.4/build_Zlib.v1.2.11.jl",
     ),
 ]
 
