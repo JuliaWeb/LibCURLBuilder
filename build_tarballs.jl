@@ -38,9 +38,11 @@ make install-exec
 platforms = supported_platforms()
 
 # The products that we will ensure are always built
+# Note: Avoid including the `curl` executable as it is unneeded and requires additional
+# configuration to work.
 products(prefix) = [
     LibraryProduct(prefix, "libcurl", :libcurl),
-    ExecutableProduct(prefix, "curl", :curl)
+    # ExecutableProduct(prefix, "curl", :curl)
 ]
 
 # Dependencies that must be installed before this package can be built
