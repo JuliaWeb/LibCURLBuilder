@@ -44,15 +44,10 @@ products(prefix) = [
 ]
 
 # Dependencies that must be installed before this package can be built
+gh = "https://github.com"
 dependencies = [
-    string(
-        "https://github.com/JuliaWeb/MbedTLSBuilder/releases/download/",
-        "v0.20.0/build_MbedTLS.v2.6.1.jl",
-    ),
-    string(
-        "https://github.com/bicycle1885/ZlibBuilder/releases/download/",
-        "v1.0.4/build_Zlib.v1.2.11.jl",
-    ),
+    "$gh/JuliaWeb/MbedTLSBuilder/releases/download/v0.20.0/build_MbedTLS.v2.6.1.jl",
+    "$gh/bicycle1885/ZlibBuilder/releases/download/v1.0.4/build_Zlib.v1.2.11.jl",
 ]
 
 # Build the tarballs, and possibly a `build.jl` as well.
