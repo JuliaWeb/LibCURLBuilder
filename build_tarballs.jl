@@ -3,17 +3,17 @@
 using BinaryBuilder
 
 name = "LibCURL"
-version = v"7.64.0"
+version = v"7.64.1"
 
 # Collection of sources required to build LibCURL
 sources = [
-    "https://curl.haxx.se/download/curl-7.64.0.tar.gz" =>
-    "cb90d2eb74d4e358c1ed1489f8e3af96b50ea4374ad71f143fa4595e998d81b5",
+    "https://curl.haxx.se/download/curl-7.64.1.tar.gz" =>
+    "432d3f466644b9416bc5b649d344116a753aeaa520c8beaf024a90cba9d3d35d",
 ]
 
 # Bash recipe for building across all platforms
 script = raw"""
-cd $WORKSPACE/srcdir/curl-7.64.0
+cd $WORKSPACE/srcdir/curl-7.64.1
 
 # Configure and build
 ./configure \
@@ -39,7 +39,8 @@ platforms = supported_platforms()
 
 # The products that we will ensure are always built
 products(prefix) = [
-    LibraryProduct(prefix, "libcurl", :libcurl)
+    LibraryProduct(prefix, "libcurl", :libcurl),
+    ExecutableProduct(prefix, "curl", :curl)
 ]
 
 # Dependencies that must be installed before this package can be built
